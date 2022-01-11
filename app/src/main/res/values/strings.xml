@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NovarisCycleMeeting2022</string>
+    <string name="employer_code">Employer Code</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">Login</string>
+    <string name="remember_me">Remember me</string>
+    <string name="welcome">Welcome</string>
+    <string name="wall_posts">Wall Posts</string>
+    <string name="voting_system">Voting System</string>
+    <string name="chat">Chat</string>
+    <string name="gm_message">GM Message</string>
+    <string name="profile">Profile</string>
+    <string name="description">description</string>
+    <string name="agenda">Agenda</string>
+</resources>

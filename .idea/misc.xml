@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-mdpi/btn_login.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable-mdpi/et_white_border.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable-mdpi/gradient_color.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/btn_login.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/et_white_border.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/gradient_color.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/layout/activity_agenda.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/activity_gm_message.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_posts.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/activity_voting.xml" value="0.2203125" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

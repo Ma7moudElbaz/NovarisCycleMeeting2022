@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".voting_system.VotingActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/screen_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/voting_system"
+            android:textColor="@color/dark_text"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_back"
+            app:drawableTint="@color/dark_text" />
+
+    </RelativeLayout>
+
+</LinearLayout>
