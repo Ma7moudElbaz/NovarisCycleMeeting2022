@@ -26,12 +26,26 @@ public interface ServiceInterface {
     @FormUrlEncoded
     Call<ResponseBody> login(@FieldMap Map<String, String> map);
 
-    @PUT("token")
+    @POST("auth/reset-password")
     @FormUrlEncoded
-    Call<ResponseBody> updateToken(@Header("Authorization") String auth, @FieldMap Map<String, String> map);
+    Call<ResponseBody> resetPassword(@FieldMap Map<String, String> map);
 
-    @POST("auth/myteam")
-    Call<ResponseBody> getMyTeam(@Header("Authorization") String auth);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //projects
     @GET("projects")

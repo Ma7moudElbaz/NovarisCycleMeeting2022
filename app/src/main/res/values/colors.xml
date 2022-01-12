@@ -13,7 +13,8 @@
     <color name="red">#ED6F6F</color>
     <color name="white">#FEFEFE</color>
     <color name="transparent">#00FEFEFE</color>
-    <color name="gray">#6D6D6D</color>
+    <color name="gray">#7B7B7C</color>
+    <color name="light_gray">#9B9B9B</color>
     <color name="black">#101010</color>
     <color name="dark_text">#2D3143</color>
 
