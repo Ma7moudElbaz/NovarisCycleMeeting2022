@@ -34,6 +34,10 @@ public interface ServiceInterface {
     @GET("agenda/{day}")
     Call<ResponseBody> getAgenda(@Header("Authorization") String auth, @Path("day") int day);
 
+    //posts
+    @GET("posts")
+    Call<ResponseBody> getPosts(@Header("Authorization") String auth, @Query("page") int pageNo);
+
 
 
 
