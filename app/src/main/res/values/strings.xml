@@ -1,4 +1,9 @@
 <resources>
+    <string-array name="days">
+        <item>Days</item>
+        <item>Day 1</item>
+        <item>Day 2</item>
+    </string-array>
     <string name="app_name">NovarisCycleMeeting2022</string>
     <string name="employer_code">Employer Code</string>
     <string name="password">Password</string>
@@ -14,4 +19,5 @@
     <string name="description">description</string>
     <string name="agenda">Agenda</string>
     <string name="share">share</string>
+    <string name="select_day">Select Day</string>
 </resources>

@@ -30,6 +30,11 @@ public interface ServiceInterface {
     @FormUrlEncoded
     Call<ResponseBody> resetPassword(@FieldMap Map<String, String> map);
 
+    //agenda
+    @GET("agenda/{day}")
+    Call<ResponseBody> getAgenda(@Header("Authorization") String auth, @Path("day") int day);
+
+
 
 
 
