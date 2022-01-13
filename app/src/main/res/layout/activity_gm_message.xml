@@ -55,15 +55,15 @@
                         android:id="@+id/img_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/white_gm_round"
                         android:paddingHorizontal="25dp"
-                        android:paddingVertical="20dp"
-                        android:background="@drawable/white_gm_round">
+                        android:paddingVertical="20dp">
 
                         <com.github.siyamed.shapeimageview.RoundedImageView
-                            android:id="@+id/img_profile"
+                            android:id="@+id/img"
                             android:layout_width="90dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/pptest"
+                            android:src="@drawable/ic_account"
                             app:siBorderColor="@color/white"
                             app:siBorderWidth="0dp"
                             app:siRadius="90dp"
@@ -74,52 +74,58 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_toEndOf="@+id/img_container"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="15dp"
-                        android:layout_centerVertical="true">
+                        android:layout_toEndOf="@+id/img_container"
+                        android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ahmed Adel"
+                            android:textColor="@color/dark_text"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/dark_text"/>
+                            android:textStyle="bold" />
+
                         <TextView
+                            android:id="@+id/role"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="General Manager"
-                            android:textSize="16sp"
                             android:layout_marginTop="5dp"
-                            android:textColor="@color/dark_text"/>
+                            android:textColor="@color/dark_text"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
                 </RelativeLayout>
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Welcome Message From Gm"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
                     android:layout_marginTop="20dp"
+                    android:paddingHorizontal="25dp"
                     android:textColor="@color/dark_text"
-                    android:paddingHorizontal="25dp"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm Welcome Message From Gm "
-                    android:textSize="16sp"
                     android:layout_marginTop="10dp"
+                    android:paddingHorizontal="25dp"
                     android:textColor="@color/gray"
-                    android:paddingHorizontal="25dp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 </RelativeLayout>

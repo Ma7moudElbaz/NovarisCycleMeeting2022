@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.novariscyclemeeting2022.agenda.AgendaActivity;
 import com.example.novariscyclemeeting2022.chat.ChatActivity;
 import com.example.novariscyclemeeting2022.gm_message.GmMessageActivity;
+import com.example.novariscyclemeeting2022.notifications.NotificationsActivity;
 import com.example.novariscyclemeeting2022.profile.ProfileActivity;
 import com.example.novariscyclemeeting2022.voting_system.VotingActivity;
 import com.example.novariscyclemeeting2022.wall_posts.PostsActivity;
@@ -30,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         chat.setOnClickListener(v -> startActivity(new Intent(getBaseContext(), ChatActivity.class)));
         gm_message.setOnClickListener(v -> startActivity(new Intent(getBaseContext(), GmMessageActivity.class)));
         profile.setOnClickListener(v -> startActivity(new Intent(getBaseContext(), ProfileActivity.class)));
+        notifications.setOnClickListener(v -> startActivity(new Intent(getBaseContext(), NotificationsActivity.class)));
     }
 
     private void initFileds() {
