@@ -30,7 +30,6 @@ import retrofit2.Response;
 
 public class VotingActivity extends AppCompatActivity {
     TextView screenTitle;
-
     RecyclerView recyclerView;
     ProgressBar loading;
 

@@ -16,10 +16,12 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".voting_system.VotingDetails"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".notifications.NotificationsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".gm_message.GmMessageActivity"
             android:exported="false"

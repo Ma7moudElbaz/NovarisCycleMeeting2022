@@ -38,7 +38,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class VotingDetails extends AppCompatActivity {
-
+    TextView screenTitle;
     TextView title;
     RadioGroup radio_answers;
     Button submit;
@@ -54,6 +54,7 @@ public class VotingDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voting_details);
         initFields();
+        screenTitle.setOnClickListener(v -> onBackPressed());
         getData(voting_id);
 
         submit.setOnClickListener(v -> {
@@ -73,6 +74,7 @@ public class VotingDetails extends AppCompatActivity {
     }
 
     private void initFields() {
+        screenTitle = findViewById(R.id.screen_title);
         voting_id = getIntent().getIntExtra("voting_id", 0);
         title = findViewById(R.id.title);
         radio_answers = findViewById(R.id.radio_answers);
