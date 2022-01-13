@@ -1,10 +1,12 @@
 package com.example.novariscyclemeeting2022.wall_posts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.novariscyclemeeting2022.R;
+import com.example.novariscyclemeeting2022.voting_system.VotingDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +67,15 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
                 .centerCrop()
                 .into(holder.img_profile);
 
+        holder.parent_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mContext, PostDetails.class);
+                i.putExtra("post_id",items.get(position).getId());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(i);
+            }
+        });
 
     }
 
@@ -76,6 +88,7 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
 
         final TextView user_name, date, content, likes_no, comments_no, share;
         final ImageView img_profile, img_post,like;
+        final RelativeLayout parent_layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,6 +102,7 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
             share = itemView.findViewById(R.id.share);
             img_profile = itemView.findViewById(R.id.img_profile);
             img_post = itemView.findViewById(R.id.img_post);
+            parent_layout = itemView.findViewById(R.id.parent_layout);
 
         }
     }

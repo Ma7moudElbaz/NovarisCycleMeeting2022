@@ -5,9 +5,11 @@
       <map>
         <entry key="app/src/main/res/drawable-mdpi/btn_gradient.xml" value="0.24074074074074073" />
         <entry key="app/src/main/res/drawable-mdpi/btn_login.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable-mdpi/comment_bg.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable-mdpi/et_white_border.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable-mdpi/gradient_color.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable-mdpi/white_round.xml" value="0.24074074074074073" />
+        <entry key="app/src/main/res/drawable/add_comment_bg.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable/btn_gradient.xml" value="0.24074074074074073" />
         <entry key="app/src/main/res/drawable/btn_login.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/et_white_border.xml" value="0.21666666666666667" />
@@ -20,10 +22,11 @@
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.2203125" />
+        <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_posts.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/activity_voting.xml" value="0.11666666666666667" />
-        <entry key="app/src/main/res/layout/activity_voting_details.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_voting_details.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/agenda_list_item.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/item_agenda.xml" value="0.2" />
         <entry key="app/src/main/res/layout/item_notification.xml" value="0.38162544169611307" />
