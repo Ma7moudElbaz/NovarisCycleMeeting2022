@@ -42,6 +42,13 @@ public interface ServiceInterface {
     @GET("polls")
     Call<ResponseBody> getVoting(@Header("Authorization") String auth, @Query("page") int pageNo);
 
+    @GET("polls/{voting_id}")
+    Call<ResponseBody> getSingleVoting(@Header("Authorization") String auth, @Path("voting_id") int voting_id);
+
+    @POST("polls")
+    @FormUrlEncoded
+    Call<ResponseBody> submitAnswer(@FieldMap Map<String, String> map);
+
     //notifications
     @GET("notifications")
     Call<ResponseBody> getNotifications(@Header("Authorization") String auth, @Query("page") int pageNo);

@@ -1,9 +1,11 @@
 package com.example.novariscyclemeeting2022.voting_system;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +42,13 @@ public class Voting_adapter extends RecyclerView.Adapter<Voting_adapter.ViewHold
         holder.title.setText(items.get(position).getTitle());
         holder.date.setText(items.get(position).getCraeated_at());
 
+        holder.parent_layout.setOnClickListener(v -> {
+            Intent i = new Intent(mContext,VotingDetails.class);
+            i.putExtra("voting_id",items.get(position).getId());
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(i);
+        });
+
     }
 
     @Override
@@ -50,12 +59,14 @@ public class Voting_adapter extends RecyclerView.Adapter<Voting_adapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         final TextView title, date;
+        final RelativeLayout parent_layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.title);
             date = itemView.findViewById(R.id.date);
+            parent_layout = itemView.findViewById(R.id.parent_layout);
 
         }
     }

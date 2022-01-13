@@ -4,7 +4,7 @@
         <item>Day 1</item>
         <item>Day 2</item>
     </string-array>
-    <string name="app_name">NovarisCycleMeeting2022</string>
+    <string name="app_name">The Winnovators</string>
     <string name="employer_code">Employer Code</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password</string>
@@ -21,4 +21,6 @@
     <string name="share">share</string>
     <string name="select_day">Select Day</string>
     <string name="notifications">Notifications</string>
+    <string name="voting_details">Voting Details</string>
+    <string name="submit">Submit</string>
 </resources>
