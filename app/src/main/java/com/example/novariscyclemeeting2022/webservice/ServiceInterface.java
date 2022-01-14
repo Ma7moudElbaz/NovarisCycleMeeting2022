@@ -38,6 +38,9 @@ public interface ServiceInterface {
     @GET("posts")
     Call<ResponseBody> getPosts(@Header("Authorization") String auth, @Query("page") int pageNo);
 
+    @GET("posts/{post_id}")
+    Call<ResponseBody> getSinglePost(@Header("Authorization") String auth, @Path("post_id") int post_id);
+
     //voting
     @GET("polls")
     Call<ResponseBody> getVoting(@Header("Authorization") String auth, @Query("page") int pageNo);
