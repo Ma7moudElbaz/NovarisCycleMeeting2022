@@ -24,4 +24,5 @@
     <color name="gradient_start">#4DBB8A</color>
     <color name="gradient_end">#1074B9</color>
     <color name="gm_bg">#E7F3F8</color>
+    <color name="comment_bg">#F5F9FC</color>
 </resources>

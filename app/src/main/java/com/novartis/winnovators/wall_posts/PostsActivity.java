@@ -45,7 +45,6 @@ public class PostsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_posts);
         initFields();
         screenTitle.setOnClickListener(v -> onBackPressed());
-        getData(currentPageNum);
     }
 
     private void initFields() {
@@ -139,6 +138,13 @@ public class PostsActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        items_list.clear();
+        currentPageNum =1;
+        getData(currentPageNum);
     }
 }

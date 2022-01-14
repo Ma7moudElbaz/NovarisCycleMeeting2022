@@ -4,6 +4,7 @@ import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -33,6 +34,13 @@ public interface ServiceInterface {
 
     @GET("posts/{post_id}")
     Call<ResponseBody> getSinglePost(@Header("Authorization") String auth, @Path("post_id") int post_id);
+
+    @POST("posts/{post_id}/make-comment")
+    @FormUrlEncoded
+    Call<ResponseBody> addComment(@Header("Authorization") String auth, @Path("post_id") int post_id, @Field("content") String content);
+
+    @POST("post/{post_id}/likes")
+    Call<ResponseBody> addLike(@Header("Authorization") String auth, @Path("post_id") int post_id);
 
     //voting
     @GET("polls")
