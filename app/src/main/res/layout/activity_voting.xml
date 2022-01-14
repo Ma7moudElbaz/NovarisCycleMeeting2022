@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:padding="15dp"
-    tools:context=".voting_system.VotingActivity">
+    tools:context="com.novartis.winnovators.voting_system.VotingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -15,47 +15,47 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".wall_posts.PostDetails"
+            android:name="com.novartis.winnovators.wall_posts.PostDetails"
             android:exported="false"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".voting_system.VotingDetails"
+            android:name="com.novartis.winnovators.voting_system.VotingDetails"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".notifications.NotificationsActivity"
+            android:name="com.novartis.winnovators.notifications.NotificationsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".gm_message.GmMessageActivity"
+            android:name="com.novartis.winnovators.gm_message.GmMessageActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".profile.ProfileActivity"
+            android:name="com.novartis.winnovators.profile.ProfileActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".chat.ChatActivity"
+            android:name="com.novartis.winnovators.chat.ChatActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".voting_system.VotingActivity"
+            android:name="com.novartis.winnovators.voting_system.VotingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".agenda.AgendaActivity"
+            android:name="com.novartis.winnovators.agenda.AgendaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".wall_posts.PostsActivity"
+            android:name="com.novartis.winnovators.wall_posts.PostsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HomeActivity"
+            android:name="com.novartis.winnovators.HomeActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Login"
+            android:name="com.novartis.winnovators.Login"
             android:exported="true"
             android:screenOrientation="portrait" >
             <intent-filter>

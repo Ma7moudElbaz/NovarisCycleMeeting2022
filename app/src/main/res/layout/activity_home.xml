@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:paddingHorizontal="15dp"
     android:paddingVertical="20dp"
-    tools:context=".HomeActivity">
+    tools:context="com.novartis.winnovators.HomeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

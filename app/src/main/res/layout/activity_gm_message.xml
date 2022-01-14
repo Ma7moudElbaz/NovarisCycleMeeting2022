@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:padding="15dp"
-    tools:context=".gm_message.GmMessageActivity">
+    tools:context="com.novartis.winnovators.gm_message.GmMessageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
     android:background="@color/bg"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".wall_posts.PostsActivity">
+    tools:context="com.novartis.winnovators.wall_posts.PostsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

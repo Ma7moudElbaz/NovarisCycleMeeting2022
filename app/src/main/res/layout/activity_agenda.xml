@@ -7,7 +7,7 @@
     android:background="@color/bg"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".agenda.AgendaActivity">
+    tools:context="com.novartis.winnovators.agenda.AgendaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
