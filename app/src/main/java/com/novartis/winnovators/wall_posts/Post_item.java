@@ -2,8 +2,10 @@ package com.novartis.winnovators.wall_posts;
 
 public class Post_item {
 
-    final private int id,isLiked;
-    final private String user_name, profile_img_url,date, content,img_url,likes_no,comments_no;
+    final private int id;
+    private int isLiked;
+    final private String user_name, profile_img_url,date, content,img_url,comments_no;
+    private String likes_no;
 
     public Post_item(int id, int isLiked, String user_name, String profile_img_url, String date, String content, String img_url, String likes_no, String comments_no) {
         this.id = id;
@@ -23,6 +25,10 @@ public class Post_item {
 
     public int getIsLiked() {
         return isLiked;
+    }
+
+    public void setIsLiked(int isLiked) {
+        this.isLiked = isLiked;
     }
 
     public String getUser_name() {
@@ -49,7 +55,13 @@ public class Post_item {
         return likes_no;
     }
 
+    public void setLikes_no(String likes_no) {
+        this.likes_no = likes_no;
+    }
+
     public String getComments_no() {
         return comments_no;
     }
+
+
 }

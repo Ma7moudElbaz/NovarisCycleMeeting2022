@@ -143,15 +143,19 @@ public class VotingDetails extends AppCompatActivity {
         map.put("poll_id", String.valueOf(voting_id));
         map.put("poll_options_id", option_id);
         dialog.show();
-        Webservice.getInstance().getApi().submitAnswer(map).enqueue(new Callback<ResponseBody>() {
+        Webservice.getInstance().getApi().submitAnswer(UserUtils.getAccessToken(getBaseContext()),map).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     if (response.isSuccessful()) {
                         JSONObject res = new JSONObject(response.body().string());
-                        Toast.makeText(getBaseContext(), response.body().string(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), res.getString("data"), Toast.LENGTH_LONG).show();
                         onBackPressed();
-                    } else {
+                    } else if (response.code() == 400){
+                        JSONObject res = new JSONObject(response.errorBody().string());
+                        Toast.makeText(getBaseContext(), res.getString("data"), Toast.LENGTH_SHORT).show();
+                        onBackPressed();
+                    }else {
                         Toast.makeText(getBaseContext(), response.errorBody().string(), Toast.LENGTH_LONG).show();
                     }
                 } catch (IOException | JSONException e) {

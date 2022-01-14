@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PostsActivity extends AppCompatActivity {
+public class PostsActivity extends AppCompatActivity implements Posts_adapter.AdapterCallback{
     TextView screenTitle;
 
     RecyclerView recyclerView;
@@ -59,7 +59,7 @@ public class PostsActivity extends AppCompatActivity {
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new Posts_adapter(getBaseContext(), items_list);
+        adapter = new Posts_adapter(getBaseContext(),this, items_list);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -140,11 +140,60 @@ public class PostsActivity extends AppCompatActivity {
         }
     }
 
+    public void addLike(int post_id,int position) {
+        loading.setVisibility(View.VISIBLE);
+
+        Webservice.getInstance().getApi().addLike(UserUtils.getAccessToken(getBaseContext()), post_id).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
+
+                loading.setVisibility(View.GONE);
+                try {
+                    if (response.isSuccessful()) {
+                        updateLikesNoAndColor(position);
+                    } else {
+                        Toast.makeText(getBaseContext(), response.errorBody().toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                Log.d("Error Throw", t.toString());
+                Log.d("commit Test Throw", t.toString());
+                Log.d("Call", t.toString());
+                Toast.makeText(getBaseContext(), "Network Error", Toast.LENGTH_SHORT).show();
+                loading.setVisibility(View.GONE);
+            }
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         items_list.clear();
         currentPageNum =1;
         getData(currentPageNum);
+    }
+
+    @Override
+    public void adapterCallback(String action, int post_id,int position) {
+        addLike(post_id,position);
+
+    }
+
+    private void updateLikesNoAndColor(int position){
+        int likesNo = Integer.parseInt(items_list.get(position).getLikes_no());
+        if (items_list.get(position).getIsLiked() == 0){
+            items_list.get(position).setIsLiked(1);
+            items_list.get(position).setLikes_no(String.valueOf(likesNo+1));
+        }else {
+            items_list.get(position).setIsLiked(0);
+            items_list.get(position).setLikes_no(String.valueOf(likesNo-1));
+        }
+        adapter.notifyDataSetChanged();
     }
 }

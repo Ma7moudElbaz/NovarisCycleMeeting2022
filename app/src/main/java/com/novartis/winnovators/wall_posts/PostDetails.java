@@ -211,7 +211,7 @@ public class PostDetails extends AppCompatActivity {
 
         content.setText(dataObj.getString("content"));
         likes_no.setText(dataObj.getString("num_likes"));
-//        comments_no.setText(dataObj.getString("num_comments"));
+        comments_no.setText(dataObj.getString("num_comments"));
         date.setText(dataObj.getString("created_at"));
         user_name.setText(dataObj.getJSONObject("owner").getString("name"));
 

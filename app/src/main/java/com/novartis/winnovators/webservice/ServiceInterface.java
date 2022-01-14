@@ -51,7 +51,7 @@ public interface ServiceInterface {
 
     @POST("polls")
     @FormUrlEncoded
-    Call<ResponseBody> submitAnswer(@FieldMap Map<String, String> map);
+    Call<ResponseBody> submitAnswer(@Header("Authorization") String auth,@FieldMap Map<String, String> map);
 
     //notifications
     @GET("notifications")

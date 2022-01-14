@@ -1,5 +1,6 @@
 package com.novartis.winnovators.wall_posts;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -24,8 +25,10 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
     private final List<Post_item> items;
 
     private final Context mContext;
+    private AdapterCallback mAdapterCallback;
 
-    public Posts_adapter(Context context, ArrayList<Post_item> items) {
+    public Posts_adapter(Context context, Activity activity, ArrayList<Post_item> items) {
+        this.mAdapterCallback = ((AdapterCallback) activity);
         this.mContext = context;
         this.items = items;
     }
@@ -49,11 +52,13 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
                     .centerCrop()
                     .into(holder.img_post);
         }
-        if (items.get(position).getIsLiked() == 0){
+        if (items.get(position).getIsLiked() == 0) {
             holder.like.setImageResource(R.drawable.ic_like);
-        }else {
+        } else {
             holder.like.setImageResource(R.drawable.ic_like_active);
         }
+
+        holder.like.setOnClickListener(v -> mAdapterCallback.adapterCallback("like", items.get(position).getId(), position));
 
         holder.user_name.setText(items.get(position).getUser_name());
         holder.date.setText(items.get(position).getDate());
@@ -68,7 +73,7 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
 
         holder.parent_layout.setOnClickListener(v -> {
             Intent i = new Intent(mContext, PostDetails.class);
-            i.putExtra("post_id",items.get(position).getId());
+            i.putExtra("post_id", items.get(position).getId());
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(i);
         });
@@ -83,7 +88,7 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         final TextView user_name, date, content, likes_no, comments_no, share;
-        final ImageView img_profile, img_post,like;
+        final ImageView img_profile, img_post, like;
         final RelativeLayout parent_layout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -101,5 +106,9 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
             parent_layout = itemView.findViewById(R.id.parent_layout);
 
         }
+    }
+
+    public interface AdapterCallback {
+        void adapterCallback(String action, int post_id, int position);
     }
 }
