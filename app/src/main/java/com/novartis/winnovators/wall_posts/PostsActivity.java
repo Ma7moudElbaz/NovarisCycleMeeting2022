@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.novartis.winnovators.UserUtils;
 import com.novartis.winnovators.webservice.Webservice;
 
@@ -31,6 +33,7 @@ public class PostsActivity extends AppCompatActivity implements Posts_adapter.Ad
 
     RecyclerView recyclerView;
     ProgressBar loading;
+    FloatingActionButton add_post;
 
     ArrayList<Post_item> items_list;
     Posts_adapter adapter;
@@ -45,11 +48,13 @@ public class PostsActivity extends AppCompatActivity implements Posts_adapter.Ad
         setContentView(R.layout.activity_posts);
         initFields();
         screenTitle.setOnClickListener(v -> onBackPressed());
+        add_post.setOnClickListener(v -> startActivity(new Intent(getBaseContext(),AddPostActivity.class)));
     }
 
     private void initFields() {
         screenTitle = findViewById(R.id.screen_title);
         loading = findViewById(R.id.loading);
+        add_post = findViewById(R.id.fab_add_post);
         recyclerView = findViewById(R.id.recycler_view);
         items_list = new ArrayList<>();
 

@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/drawable/gradient_color.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.1328125" />
         <entry key="app/src/main/res/drawable/white_round.xml" value="0.24074074074074073" />
+        <entry key="app/src/main/res/layout/activity_add_post.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_agenda.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/activity_gm_message.xml" value="0.33" />
@@ -23,7 +24,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.19537037037037036" />
-        <entry key="app/src/main/res/layout/activity_posts.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_posts.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/activity_voting.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/activity_voting_details.xml" value="0.11666666666666667" />
