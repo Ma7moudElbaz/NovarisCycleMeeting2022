@@ -19,7 +19,7 @@
             android:name="com.novartis.winnovators.wall_posts.AddPostActivity"
             android:exported="false" />
         <activity
-            android:name="com.novartis.winnovators.wall_posts.PostDetails"
+            android:name="com.novartis.winnovators.wall_posts.PostDetailsActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

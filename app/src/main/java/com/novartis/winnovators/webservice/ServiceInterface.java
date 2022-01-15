@@ -24,9 +24,9 @@ public interface ServiceInterface {
     @FormUrlEncoded
     Call<ResponseBody> login(@FieldMap Map<String, String> map);
 
-    @POST("auth/reset-password")
-    @FormUrlEncoded
-    Call<ResponseBody> resetPassword(@FieldMap Map<String, String> map);
+    @GET("account/me")
+    Call<ResponseBody> getProfileData(@Header("Authorization") String auth);
+
 
     //agenda
     @GET("agenda/{day}")

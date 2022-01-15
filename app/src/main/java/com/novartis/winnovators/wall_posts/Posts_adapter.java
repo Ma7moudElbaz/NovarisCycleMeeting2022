@@ -72,7 +72,7 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
                 .into(holder.img_profile);
 
         holder.parent_layout.setOnClickListener(v -> {
-            Intent i = new Intent(mContext, PostDetails.class);
+            Intent i = new Intent(mContext, PostDetailsActivity.class);
             i.putExtra("post_id", items.get(position).getId());
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(i);

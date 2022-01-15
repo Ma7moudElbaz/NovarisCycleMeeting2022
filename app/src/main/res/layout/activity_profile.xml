@@ -41,7 +41,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
-                android:src="@drawable/pptest"
+                android:src="@drawable/ic_account"
                 app:siBorderColor="@color/white"
                 app:siBorderWidth="0dp"
                 app:siRadius="200dp"
@@ -82,7 +82,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:importantForAutofill="no"
-                    android:text="1234456"
                     android:textColor="@color/light_gray"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -112,7 +111,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:importantForAutofill="no"
-                    android:text="Name"
                     android:textColor="@color/light_gray"
                     android:textSize="18sp" />
             </LinearLayout>
@@ -173,4 +171,10 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 </RelativeLayout>
