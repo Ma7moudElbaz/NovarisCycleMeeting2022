@@ -62,9 +62,11 @@
             android:buttonTint="@color/white"
             android:checked="true"
             android:text="@string/remember_me"
+            android:visibility="gone"
             android:textColor="@color/white" />
 
         <TextView
+            android:layout_marginTop="5dp"
             android:id="@+id/tv_forgot_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

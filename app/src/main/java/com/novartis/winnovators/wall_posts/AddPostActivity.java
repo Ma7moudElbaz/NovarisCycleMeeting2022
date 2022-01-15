@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
@@ -47,6 +48,7 @@ import retrofit2.Response;
 
 public class AddPostActivity extends AppCompatActivity {
 
+    TextView screenTitle;
     ImageView add_image, post_img;
     EditText content;
     Button submit;
@@ -59,6 +61,7 @@ public class AddPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
         initFields();
+        screenTitle.setOnClickListener(v -> onBackPressed());
 
         submit.setOnClickListener(v -> {
             if (content.length() == 0 || filePath.equals("")) {
@@ -100,6 +103,7 @@ public class AddPostActivity extends AppCompatActivity {
         dialog.setMessage("Please, Wait...");
         dialog.setCancelable(false);
 
+        screenTitle = findViewById(R.id.screen_title);
         add_image = findViewById(R.id.add_image);
         post_img = findViewById(R.id.post_img);
         submit = findViewById(R.id.btn_submit);

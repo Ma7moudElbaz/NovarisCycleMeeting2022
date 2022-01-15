@@ -14,9 +14,11 @@
     <color name="white">#FEFEFE</color>
     <color name="transparent">#00FEFEFE</color>
     <color name="gray">#7B7B7C</color>
+    <color name="line_gray">#DDDDDD</color>
     <color name="light_gray">#9B9B9B</color>
     <color name="black">#101010</color>
     <color name="dark_text">#2D3143</color>
+    <color name="blue_text">#2A9AE0</color>
 
     <color name="login_btn">#87094A72</color>
     <color name="bg">#F5F6FA</color>
