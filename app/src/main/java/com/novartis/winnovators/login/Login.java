@@ -1,10 +1,11 @@
-package com.novartis.winnovators;
+package com.novartis.winnovators.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
+import com.novartis.winnovators.HomeActivity;
+import com.novartis.winnovators.UserUtils;
+import com.novartis.winnovators.profile.BottomSheet_change_password;
 import com.novartis.winnovators.webservice.Webservice;
 
 import org.json.JSONException;
@@ -26,8 +30,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Login extends AppCompatActivity {
-
+public class Login extends AppCompatActivity implements BottomSheet_forgot_password.EmailSubmitListener{
+    public void showForgotPassSheet() {
+        BottomSheet_forgot_password passBottomSheet =
+                new BottomSheet_forgot_password(getBaseContext());
+        passBottomSheet.show(getSupportFragmentManager(), "forgot_password");
+    }
     Button login;
     EditText employerCode, password;
     TextView forgotPassword;
@@ -43,6 +51,8 @@ public class Login extends AppCompatActivity {
         password.setText(UserUtils.getLoginPassword(getBaseContext()));
 
         login.setOnClickListener(v -> login());
+
+        forgotPassword.setOnClickListener(v -> showForgotPassSheet());
 
     }
 
@@ -80,7 +90,9 @@ public class Login extends AppCompatActivity {
                             UserUtils.setLoginData(getBaseContext(), emailtxt, passwordtxt);
                             startActivity(new Intent(getBaseContext(), HomeActivity.class));
                         } else {
-                            Toast.makeText(getBaseContext(), response.errorBody().string(), Toast.LENGTH_LONG).show();
+
+                            JSONObject res = new JSONObject(response.errorBody().string());
+                            Toast.makeText(getBaseContext(), res.getString("data"), Toast.LENGTH_LONG).show();
                         }
                     } catch (IOException | JSONException e) {
                         e.printStackTrace();
@@ -95,5 +107,41 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
+    }
+
+
+    public void forgotPassword(String email) {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("email", email);
+        dialog.show();
+        Webservice.getInstance().getApi().updatePassword(UserUtils.getAccessToken(getBaseContext()),map).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    if (response.code() == 200) {
+                        JSONObject res = new JSONObject(response.body().string());
+                        Toast.makeText(getBaseContext(), res.getString("data"), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getBaseContext(), response.errorBody().string(), Toast.LENGTH_LONG).show();
+                    }
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getBaseContext(), "Network Error", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+    }
+
+
+    @Override
+    public void emailSubmitListener(String emailAddress) {
+        forgotPassword(emailAddress);
     }
 }

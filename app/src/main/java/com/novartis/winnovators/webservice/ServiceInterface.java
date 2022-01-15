@@ -24,8 +24,21 @@ public interface ServiceInterface {
     @FormUrlEncoded
     Call<ResponseBody> login(@FieldMap Map<String, String> map);
 
+    @POST("auth/reset-password")
+    @FormUrlEncoded
+    Call<ResponseBody> forgotPassword(@FieldMap Map<String, String> map);
+
+    @POST("account/update-password")
+    @FormUrlEncoded
+    Call<ResponseBody> updatePassword(@Header("Authorization") String auth,@FieldMap Map<String, String> map);
+
     @GET("account/me")
     Call<ResponseBody> getProfileData(@Header("Authorization") String auth);
+
+    @Multipart
+    @POST("account/update")
+    Call<ResponseBody> updatePP(@Header("Authorization") String auth,@Part MultipartBody.Part photo, @Part("name") RequestBody name, @Part("email") RequestBody email);
+
 
 
     //agenda

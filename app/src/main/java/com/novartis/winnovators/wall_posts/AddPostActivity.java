@@ -190,9 +190,9 @@ public class AddPostActivity extends AppCompatActivity {
         // Create MultipartBody.Part using file request-body,file name and part name
         MultipartBody.Part part = MultipartBody.Part.createFormData("photo", file.getName(), fileReqBody);
         //Create request body with text description and text media type
-        RequestBody teamNameBody = RequestBody.create(MediaType.parse("text/plain"), content);
+        RequestBody myContent = RequestBody.create(MediaType.parse("text/plain"), content);
 
-        Webservice.getInstance().getApi().addPostWithoutImage(UserUtils.getAccessToken(getBaseContext()), teamNameBody).enqueue(new Callback<ResponseBody>() {
+        Webservice.getInstance().getApi().addPostWithoutImage(UserUtils.getAccessToken(getBaseContext()), myContent).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {

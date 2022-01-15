@@ -7,7 +7,7 @@
     android:background="@drawable/bg_login"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context="com.novartis.winnovators.Login">
+    tools:context="com.novartis.winnovators.login.Login">
 
 
     <ImageView

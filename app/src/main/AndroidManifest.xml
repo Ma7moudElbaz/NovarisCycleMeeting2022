@@ -59,7 +59,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.novartis.winnovators.Login"
+            android:name="com.novartis.winnovators.login.Login"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
