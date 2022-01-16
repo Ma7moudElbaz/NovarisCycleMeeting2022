@@ -25,7 +25,7 @@
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/activity_gm_message.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.2203125" />
         <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.19537037037037036" />
         <entry key="app/src/main/res/layout/activity_posts.xml" value="0.11666666666666667" />
@@ -33,7 +33,7 @@
         <entry key="app/src/main/res/layout/activity_voting.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/activity_voting_details.xml" value="0.11666666666666667" />
         <entry key="app/src/main/res/layout/agenda_list_item.xml" value="0.11666666666666667" />
-        <entry key="app/src/main/res/layout/bottom_sheet_change_password.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/bottom_sheet_change_password.xml" value="0.2064814814814815" />
         <entry key="app/src/main/res/layout/bottom_sheet_forgot_password.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/item_agenda.xml" value="0.2" />
         <entry key="app/src/main/res/layout/item_comment.xml" value="0.4" />

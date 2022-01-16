@@ -242,7 +242,7 @@ public class ProfileActivity extends AppCompatActivity implements BottomSheet_ch
                 try {
                     if (response.code() == 200) {
                         JSONObject res = new JSONObject(response.body().string());
-                        Toast.makeText(getBaseContext(), res.getString("data"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), res.getString("msg"), Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getBaseContext(), response.errorBody().string(), Toast.LENGTH_LONG).show();
                     }
