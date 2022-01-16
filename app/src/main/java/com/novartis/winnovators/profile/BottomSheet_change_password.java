@@ -39,7 +39,7 @@ public class BottomSheet_change_password extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        current_pass = view.findViewById(R.id.curren_pass);
+        current_pass = view.findViewById(R.id.current_pass);
         new_pass = view.findViewById(R.id.new_pass);
         submitButton = view.findViewById(R.id.btn_submit);
         closeButton = view.findViewById(R.id.img_close);
