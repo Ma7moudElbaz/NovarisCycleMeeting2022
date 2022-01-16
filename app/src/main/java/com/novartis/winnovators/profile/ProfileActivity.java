@@ -234,7 +234,7 @@ public class ProfileActivity extends AppCompatActivity implements BottomSheet_ch
         Map<String, String> map = new HashMap<>();
 
         map.put("current_password", currentPass);
-        map.put("new_password", newPass);
+        map.put("password", newPass);
         dialog.show();
         Webservice.getInstance().getApi().updatePassword(UserUtils.getAccessToken(getBaseContext()),map).enqueue(new Callback<ResponseBody>() {
             @Override
