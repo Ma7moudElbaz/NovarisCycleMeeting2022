@@ -30,12 +30,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Login extends AppCompatActivity implements BottomSheet_forgot_password.EmailSubmitListener{
+public class Login extends AppCompatActivity implements BottomSheet_forgot_password.EmailSubmitListener {
     public void showForgotPassSheet() {
         BottomSheet_forgot_password passBottomSheet =
                 new BottomSheet_forgot_password(getBaseContext());
         passBottomSheet.show(getSupportFragmentManager(), "forgot_password");
     }
+
     Button login;
     EditText employerCode, password;
     TextView forgotPassword;
@@ -85,8 +86,11 @@ public class Login extends AppCompatActivity implements BottomSheet_forgot_passw
                     try {
                         if (response.code() == 200) {
                             JSONObject res = new JSONObject(response.body().string());
-                            String accessToken = res.getString("access_token");
-                            UserUtils.setAccessToken(getBaseContext(), accessToken);
+                            UserUtils.setAccessToken(getBaseContext(), res.getString("access_token"));
+                            UserUtils.setUserId(getBaseContext(), res.getJSONObject("account").getInt("id"));
+                            UserUtils.setUserName(getBaseContext(), res.getJSONObject("account").getString("name"));
+                            UserUtils.setUserEmail(getBaseContext(), res.getJSONObject("account").getString("email"));
+                            UserUtils.setUserPhoto(getBaseContext(), res.getJSONObject("account").getString("photo"));
                             UserUtils.setLoginData(getBaseContext(), emailtxt, passwordtxt);
                             startActivity(new Intent(getBaseContext(), HomeActivity.class));
                         } else {
@@ -115,7 +119,7 @@ public class Login extends AppCompatActivity implements BottomSheet_forgot_passw
 
         map.put("email", email);
         dialog.show();
-        Webservice.getInstance().getApi().updatePassword(UserUtils.getAccessToken(getBaseContext()),map).enqueue(new Callback<ResponseBody>() {
+        Webservice.getInstance().getApi().updatePassword(UserUtils.getAccessToken(getBaseContext()), map).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {

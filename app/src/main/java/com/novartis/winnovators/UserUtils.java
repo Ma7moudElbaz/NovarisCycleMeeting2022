@@ -63,4 +63,14 @@ public class UserUtils {
     public static String getUserEmail(Context context) {
         return getSharedPreferences(context).getString("userEmail", "");
     }
+
+    public static void setUserPhoto(Context context,String userName){
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString("userPhoto", userName);
+        editor.apply();
+    }
+
+    public static String getUserPhoto(Context context) {
+        return getSharedPreferences(context).getString("userPhoto", "");
+    }
 }

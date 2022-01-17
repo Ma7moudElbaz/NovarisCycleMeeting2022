@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:padding="15dp"
-    tools:context="com.novartis.winnovators.chat.ChatActivity">
+    tools:context="com.novartis.winnovators.chat.MessagesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
                 android:id="@+id/screen_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chat"
+                android:text="@string/back"
                 android:textColor="@color/dark_text"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            tools:listitem="@layout/item_user" />
+            tools:listitem="@layout/item_message_left" />
     </LinearLayout>
 
     <ProgressBar
@@ -45,5 +45,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
-
 </RelativeLayout>
