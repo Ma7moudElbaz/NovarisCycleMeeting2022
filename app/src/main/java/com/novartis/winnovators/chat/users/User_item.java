@@ -1,11 +1,11 @@
-package com.novartis.winnovators.chat;
+package com.novartis.winnovators.chat.users;
 
 public class User_item {
 
+private final int id;
+    private final String  name, socket_id, online, updated_at,img_profile;
 
-    private final String id, name, socket_id, online, updated_at,img_profile;
-
-    public User_item(String id, String name, String socket_id, String online, String updated_at, String img_profile) {
+    public User_item(int id, String name, String socket_id, String online, String updated_at, String img_profile) {
         this.id = id;
         this.name = name;
         this.socket_id = socket_id;
@@ -14,7 +14,7 @@ public class User_item {
         this.img_profile = img_profile;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

@@ -1,6 +1,7 @@
-package com.novartis.winnovators.chat;
+package com.novartis.winnovators.chat.users;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.novariscyclemeeting2022.R;
+import com.novartis.winnovators.chat.messages.MessagesActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +50,11 @@ public class Users_adapter extends RecyclerView.Adapter<Users_adapter.ViewHolder
                 .into(holder.img_profile);
 
         holder.parent_layout.setOnClickListener(v -> {
-//            Intent i = new Intent(mContext, VotingDetails.class);
-//            i.putExtra("voting_id",items.get(position).getId());
-//            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            mContext.startActivity(i);
+            Intent i = new Intent(mContext, MessagesActivity.class);
+            i.putExtra("to_user_id",items.get(position).getId());
+            i.putExtra("to_user_name",items.get(position).getName());
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(i);
         });
 
     }

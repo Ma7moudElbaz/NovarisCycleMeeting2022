@@ -17,7 +17,7 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.novartis.winnovators.chat.MessagesActivity"
+            android:name="com.novartis.winnovators.chat.messages.MessagesActivity"
             android:exported="false" />
         <activity
             android:name="com.novartis.winnovators.wall_posts.AddPostActivity"

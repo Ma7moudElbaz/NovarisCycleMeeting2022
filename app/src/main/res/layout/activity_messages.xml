@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    android:padding="15dp"
-    tools:context="com.novartis.winnovators.chat.MessagesActivity">
+    tools:context="com.novartis.winnovators.chat.messages.MessagesActivity">
 
     <LinearLayout
+        android:layout_above="@+id/add_msg_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="15dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -45,4 +46,44 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
+
+
+    <RelativeLayout
+        android:id="@+id/add_msg_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:focusableInTouchMode="true"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp">
+
+        <EditText
+            android:id="@+id/et_msg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/send_msg"
+            android:background="@color/transparent"
+            android:hint="@string/say_something"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+
+        <ImageView
+            android:id="@+id/send_msg"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="5dp"
+            android:contentDescription="@string/description"
+            android:gravity="center"
+            android:src="@drawable/ic_send_msg" />
+
+
+    </RelativeLayout>
 </RelativeLayout>
