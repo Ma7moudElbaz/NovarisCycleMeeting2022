@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
 import com.novartis.winnovators.utils.UserUtils;
@@ -29,14 +28,12 @@ import io.socket.emitter.Emitter;
 public class ChatActivity extends AppCompatActivity {
 
     TextView screenTitle;
-    private Socket mSocket;
-
     RecyclerView recyclerView;
-
     ProgressBar loading;
     ArrayList<User_item> users_list;
     Users_adapter adapter;
 
+    private Socket mSocket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +45,16 @@ public class ChatActivity extends AppCompatActivity {
         mSocket.on(Socket.EVENT_CONNECT, onConnected);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on("chatListRes", onChatListRes);
-
         mSocket.connect();
-        mSocket.emit("chatList", UserUtils.getUserId(getBaseContext()));
+
+        getUsersChatList();
     }
 
-    private final Emitter.Listener onConnected = args -> runOnUiThread(() -> {
-        Log.e("connection success", Arrays.toString(args));
-    });
+    // Socket Listeners
+    private final Emitter.Listener onConnected = args -> runOnUiThread(() -> Log.e("connection success", Arrays.toString(args)));
 
     private final Emitter.Listener onConnectError = args -> runOnUiThread(() -> {
         Log.e("connection Failed", Arrays.toString(args));
-        Toast.makeText(getBaseContext(), "Connection Failed", Toast.LENGTH_SHORT).show();
     });
 
     private final Emitter.Listener onChatListRes = args -> runOnUiThread(() -> {
@@ -70,12 +65,19 @@ public class ChatActivity extends AppCompatActivity {
             if (data.has("chatList")) {
                 JSONArray usersArray = data.getJSONArray("chatList");
                 setUsers_list(usersArray);
+            } else {
+                mSocket.emit("chatList", UserUtils.getUserId(getBaseContext()));
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
     });
+
+    //my methods
+    private void getUsersChatList() {
+        mSocket.emit("chatList", UserUtils.getUserId(getBaseContext()));
+    }
 
     public void setUsers_list(JSONArray list) {
         users_list.clear();
@@ -88,10 +90,10 @@ public class ChatActivity extends AppCompatActivity {
                 String online = currentObject.getString("online");
                 String updated_at = currentObject.getString("updated_at");
                 String img_profile = currentObject.getString("url");
-                if (img_profile.equals("null")){
+                if (img_profile.equals("null")) {
                     img_profile = "https://winnovators.eventonlineregister.com/assets/admin/images/default-avatar.png";
-                }else {
-                    img_profile = "https://winnovators.eventonlineregister.com/"+img_profile;
+                } else {
+                    img_profile = "https://winnovators.eventonlineregister.com/" + img_profile;
                 }
                 users_list.add(new User_item(id, name, socket_id, online, updated_at, img_profile));
             }
@@ -125,5 +127,17 @@ public class ChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mSocket.disconnect();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSocket.disconnect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSocket.connect();
     }
 }

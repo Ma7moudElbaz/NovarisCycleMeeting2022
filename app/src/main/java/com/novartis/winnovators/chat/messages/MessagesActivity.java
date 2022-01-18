@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,21 +30,17 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
 public class MessagesActivity extends AppCompatActivity {
+
     TextView screenTitle, et_msg;
     ImageView send_msg;
-    private Socket mSocket;
-
     RecyclerView recyclerView;
-
     ProgressBar loading;
     ArrayList<Message_item> items_list;
     Messages_adapter adapter;
     int toUserId, fromUserId;
     String toUserName, toImageUrl;
+    private Socket mSocket;
 
-    private void scrollToEnd() {
-        recyclerView.scrollToPosition(items_list.size() - 1);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,43 +52,23 @@ public class MessagesActivity extends AppCompatActivity {
         mSocket.on(Socket.EVENT_CONNECT, onConnected);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on("getMessagesResponse", getMessagesResponse);
-        mSocket.on(Socket.EVENT_MESSAGE, onMessage);
-        mSocket.on("onMessage", onMessage);
-        mSocket.on("addMessageResponse", addMessageResponse);
-
         mSocket.connect();
-
         send_msg.setOnClickListener(v -> {
-            //retrieve the nickname and the message content and fire the event messagedetectionif(!messagetxt.getText().toString().isEmpty()){
-
-            HashMap map = new HashMap();
-            map.put("fromUserId", fromUserId);
-            map.put("toUserId", toUserId);
-            map.put("message", et_msg.getText().toString());
-
-            JSONObject obj = new JSONObject(map);
-            items_list.add(new Message_item(1, fromUserId, toUserId, et_msg.getText().toString(), "", "", "", "", ""));
-            adapter.notifyDataSetChanged();
-            scrollToEnd();
-            mSocket.emit("addMessage", obj);
-            et_msg.setText("");
+            if (et_msg.length() != 0) {
+                sendMsg(et_msg.getText().toString());
+            } else {
+                Toast.makeText(getBaseContext(), "You can't send empty message", Toast.LENGTH_SHORT).show();
+            }
         });
 
-
-        HashMap map = new HashMap();
-        map.put("fromUserId", fromUserId);
-        map.put("toUserId", toUserId);
-        final JSONObject obj = new JSONObject(map);
-        mSocket.emit("getMessages", obj);
+        getChatMessages();
     }
-
-    private final Emitter.Listener onConnected = args -> runOnUiThread(() -> {
-        mSocket.emit("chatList", UserUtils.getUserId(getBaseContext()));
-        Log.e("connection success", Arrays.toString(args));
-    });
+    // Socket Listeners
+    private final Emitter.Listener onConnected = args -> runOnUiThread(() -> Log.e("connection success", Arrays.toString(args)));
 
     private final Emitter.Listener onConnectError = args -> runOnUiThread(() -> {
         Log.e("connection Failed", Arrays.toString(args));
+        Toast.makeText(getBaseContext(), "Connection Failed", Toast.LENGTH_SHORT).show();
     });
 
     private final Emitter.Listener getMessagesResponse = args -> runOnUiThread(() -> {
@@ -106,27 +84,28 @@ public class MessagesActivity extends AppCompatActivity {
         }
     });
 
+    //My Methods
+    private void sendMsg(String msg) {
+        HashMap map = new HashMap();
+        map.put("fromUserId", fromUserId);
+        map.put("toUserId", toUserId);
+        map.put("message", msg);
 
-    private final Emitter.Listener addMessageResponse = args -> runOnUiThread(() -> {
-        Log.e("Add Message", Arrays.toString(args));
-        JSONObject data = (JSONObject) args[0];
-        String text = null;
-        //extract data from fired event
-        try {
-            text = data.getString("message");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JSONObject obj = new JSONObject(map);
+        items_list.add(new Message_item(1, fromUserId, toUserId, msg, "", "", "", "", ""));
+        adapter.notifyDataSetChanged();
+        scrollToEnd();
+        mSocket.emit("addMessage", obj);
+        et_msg.setText("");
+    }
 
-//                    MessageList.add(new Message(reciver.getName(), text));
-//                    chatBoxAdapter.notifyDataSetChanged();
-        //set the adapter for the recycler view}
-    });
-
-    private final Emitter.Listener onMessage = args -> runOnUiThread(() -> {
-        Log.e("On Message", Arrays.toString(args));
-        Toast.makeText(getBaseContext(), "Arrays.toString(args)", Toast.LENGTH_SHORT).show();
-    });
+    private void getChatMessages() {
+        HashMap map = new HashMap();
+        map.put("fromUserId", fromUserId);
+        map.put("toUserId", toUserId);
+        final JSONObject obj = new JSONObject(map);
+        mSocket.emit("getMessages", obj);
+    }
 
     public void setMessages_list(JSONArray list) {
         try {
@@ -177,10 +156,25 @@ public class MessagesActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    private void scrollToEnd() {
+        recyclerView.scrollToPosition(items_list.size() - 1);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mSocket.disconnect();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSocket.disconnect();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSocket.connect();
+    }
 }
