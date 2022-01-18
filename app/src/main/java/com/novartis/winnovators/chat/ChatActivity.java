@@ -87,7 +87,12 @@ public class ChatActivity extends AppCompatActivity {
                 String socket_id = currentObject.getString("socket_id");
                 String online = currentObject.getString("online");
                 String updated_at = currentObject.getString("updated_at");
-                String img_profile = "";
+                String img_profile = currentObject.getString("url");
+                if (img_profile.equals("null")){
+                    img_profile = "https://winnovators.eventonlineregister.com/assets/admin/images/default-avatar.png";
+                }else {
+                    img_profile = "https://winnovators.eventonlineregister.com/"+img_profile;
+                }
                 users_list.add(new User_item(id, name, socket_id, online, updated_at, img_profile));
             }
             adapter.notifyDataSetChanged();

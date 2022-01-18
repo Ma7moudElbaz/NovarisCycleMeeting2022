@@ -38,7 +38,11 @@ public class MessagesActivity extends AppCompatActivity {
     ArrayList<Message_item> items_list;
     Messages_adapter adapter;
     int toUserId, fromUserId;
-    String toUserName;
+    String toUserName, toImageUrl;
+
+    private void scrollToEnd() {
+        recyclerView.scrollToPosition(items_list.size() - 1);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,7 @@ public class MessagesActivity extends AppCompatActivity {
             JSONObject obj = new JSONObject(map);
             items_list.add(new Message_item(1, fromUserId, toUserId, et_msg.getText().toString(), "", "", "", "", ""));
             adapter.notifyDataSetChanged();
+            scrollToEnd();
             mSocket.emit("addMessage", obj);
             et_msg.setText("");
         });
@@ -74,11 +79,7 @@ public class MessagesActivity extends AppCompatActivity {
         HashMap map = new HashMap();
         map.put("fromUserId", fromUserId);
         map.put("toUserId", toUserId);
-//        map.put("toUserId", toUserId);
         final JSONObject obj = new JSONObject(map);
-
-        Toast.makeText(getBaseContext(), map.toString(), Toast.LENGTH_SHORT).show();
-
         mSocket.emit("getMessages", obj);
     }
 
@@ -139,6 +140,7 @@ public class MessagesActivity extends AppCompatActivity {
                 items_list.add(new Message_item(id, fromUserId, toUserId, message, time, date, type, fileFormat, filePath));
             }
             adapter.notifyDataSetChanged();
+            scrollToEnd();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -148,6 +150,7 @@ public class MessagesActivity extends AppCompatActivity {
     private void initFields() {
         toUserId = getIntent().getIntExtra("to_user_id", 0);
         toUserName = getIntent().getStringExtra("to_user_name");
+        toImageUrl = getIntent().getStringExtra("to_image_url");
         fromUserId = UserUtils.getUserId(getBaseContext());
         screenTitle = findViewById(R.id.screen_title);
         screenTitle.setText(toUserName);
@@ -166,9 +169,8 @@ public class MessagesActivity extends AppCompatActivity {
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new Messages_adapter(getBaseContext(), items_list);
+        adapter = new Messages_adapter(getBaseContext(), items_list, toImageUrl);
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override

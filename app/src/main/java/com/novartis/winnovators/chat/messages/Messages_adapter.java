@@ -25,18 +25,20 @@ public class Messages_adapter extends RecyclerView.Adapter<Messages_adapter.View
     private final List<Message_item> items;
 
     private final Context mContext;
+    private final String toImageUrl;
 
-    public Messages_adapter(Context context, ArrayList<Message_item> items) {
+    public Messages_adapter(Context context, ArrayList<Message_item> items, String toImageUrl) {
         this.mContext = context;
+        this.toImageUrl = toImageUrl;
         this.items = items;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == 1){
+        if (viewType == 1) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_left, parent, false));
-        }else {
+        } else {
             return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_right, parent, false));
         }
     }
@@ -55,10 +57,17 @@ public class Messages_adapter extends RecyclerView.Adapter<Messages_adapter.View
 
         holder.content.setText(items.get(position).getMessage());
 
-//        Glide.with(mContext)
-//                .load(items.get(position).getImg_profile())
-//                .centerCrop()
-//                .into(holder.img_profile);
+        if (items.get(position).getFromUserId() == UserUtils.getUserId(mContext)) {
+            Glide.with(mContext)
+                    .load(UserUtils.getUserPhoto(mContext))
+                    .centerCrop()
+                    .into(holder.img_profile);
+        } else {
+            Glide.with(mContext)
+                    .load(toImageUrl)
+                    .centerCrop()
+                    .into(holder.img_profile);
+        }
 
     }
 

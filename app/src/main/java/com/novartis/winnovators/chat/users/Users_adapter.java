@@ -44,6 +44,12 @@ public class Users_adapter extends RecyclerView.Adapter<Users_adapter.ViewHolder
         holder.user_name.setText(items.get(position).getName());
         holder.date.setText(items.get(position).getUpdated_at());
 
+        if (items.get(position).getOnline().equalsIgnoreCase("y")){
+            holder.img_online.setVisibility(View.VISIBLE);
+        }else {
+            holder.img_online.setVisibility(View.GONE);
+        }
+
         Glide.with(mContext)
                 .load(items.get(position).getImg_profile())
                 .centerCrop()
@@ -53,6 +59,7 @@ public class Users_adapter extends RecyclerView.Adapter<Users_adapter.ViewHolder
             Intent i = new Intent(mContext, MessagesActivity.class);
             i.putExtra("to_user_id",items.get(position).getId());
             i.putExtra("to_user_name",items.get(position).getName());
+            i.putExtra("to_image_url",items.get(position).getImg_profile());
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(i);
         });
@@ -67,7 +74,7 @@ public class Users_adapter extends RecyclerView.Adapter<Users_adapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         final TextView user_name, date;
-        final ImageView img_profile;
+        final ImageView img_profile,img_online;
         final RelativeLayout parent_layout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -76,6 +83,7 @@ public class Users_adapter extends RecyclerView.Adapter<Users_adapter.ViewHolder
             user_name = itemView.findViewById(R.id.user_name);
             date = itemView.findViewById(R.id.date);
             img_profile = itemView.findViewById(R.id.img_profile);
+            img_online = itemView.findViewById(R.id.img_online);
             parent_layout = itemView.findViewById(R.id.parent_layout);
 
         }
