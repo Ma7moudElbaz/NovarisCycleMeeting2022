@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
-import com.novartis.winnovators.UserUtils;
+import com.novartis.winnovators.utils.UserUtils;
 import com.novartis.winnovators.chat.users.User_item;
 import com.novartis.winnovators.chat.users.Users_adapter;
 
@@ -22,7 +22,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -60,6 +59,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private final Emitter.Listener onConnectError = args -> runOnUiThread(() -> {
         Log.e("connection Failed", Arrays.toString(args));
+        Toast.makeText(getBaseContext(), "Connection Failed", Toast.LENGTH_SHORT).show();
     });
 
     private final Emitter.Listener onChatListRes = args -> runOnUiThread(() -> {

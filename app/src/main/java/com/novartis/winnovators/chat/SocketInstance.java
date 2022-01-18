@@ -1,9 +1,8 @@
 package com.novartis.winnovators.chat;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
-import com.novartis.winnovators.UserUtils;
+import com.novartis.winnovators.utils.UserUtils;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
@@ -12,7 +11,7 @@ import java.net.URISyntaxException;
 
 public class SocketInstance {
     private static Socket iSocket;
-    private static final String SOCKET_URL = "https://redis.eventonlineregister.com";
+    private static final String SOCKET_URL = "https://redis.eventonlineregister.com:6380";
 
 
     public SocketInstance(Context context) {

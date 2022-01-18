@@ -24,9 +24,7 @@ import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.novartis.winnovators.HomeActivity;
-import com.novartis.winnovators.UserUtils;
-import com.novartis.winnovators.wall_posts.AddPostActivity;
+import com.novartis.winnovators.utils.UserUtils;
 import com.novartis.winnovators.webservice.Webservice;
 
 import org.json.JSONException;

@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.novariscyclemeeting2022.R;
-import com.novartis.winnovators.UserUtils;
+import com.novartis.winnovators.utils.UserUtils;
 import com.novartis.winnovators.webservice.Webservice;
 
 import org.json.JSONException;

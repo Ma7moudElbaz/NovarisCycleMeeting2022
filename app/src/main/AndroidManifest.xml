@@ -75,7 +75,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.novartis.winnovators.PusherMessagingService"
+        <service android:name="com.novartis.winnovators.utils.PusherMessagingService"
             android:exported="false">
             <intent-filter android:priority="1">
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

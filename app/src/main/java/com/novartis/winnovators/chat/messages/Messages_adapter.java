@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,8 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.novariscyclemeeting2022.R;
-import com.novartis.winnovators.UserUtils;
-import com.novartis.winnovators.chat.users.User_item;
+import com.novartis.winnovators.utils.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;

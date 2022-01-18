@@ -1,4 +1,4 @@
-package com.novartis.winnovators
+package com.novartis.winnovators.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

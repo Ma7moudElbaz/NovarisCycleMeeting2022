@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
-import com.novartis.winnovators.UserUtils;
+import com.novartis.winnovators.utils.UserUtils;
 import com.novartis.winnovators.chat.SocketInstance;
 
 import org.json.JSONArray;

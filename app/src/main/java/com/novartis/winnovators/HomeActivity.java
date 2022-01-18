@@ -1,5 +1,6 @@
 package com.novartis.winnovators;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -43,5 +44,16 @@ public class HomeActivity extends AppCompatActivity {
         chat = findViewById(R.id.chat);
         gm_message = findViewById(R.id.gm_message);
         profile = findViewById(R.id.profile);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(HomeActivity.this)
+                .setTitle("Are you sure you want to exit ? ")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    finish();
+                })
+                .setNegativeButton("Dismiss", null)
+                .show();
     }
 }

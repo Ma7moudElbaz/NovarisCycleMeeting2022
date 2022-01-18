@@ -1,4 +1,4 @@
-package com.novartis.winnovators;
+package com.novartis.winnovators.utils;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -17,6 +17,7 @@ import androidx.core.app.NotificationCompat;
 import com.example.novariscyclemeeting2022.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.novartis.winnovators.HomeActivity;
 import com.pusher.pushnotifications.fcm.MessagingService;
 
 public class PusherMessagingService extends MessagingService {

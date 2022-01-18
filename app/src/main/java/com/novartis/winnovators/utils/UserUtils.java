@@ -1,4 +1,4 @@
-package com.novartis.winnovators;
+package com.novartis.winnovators.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

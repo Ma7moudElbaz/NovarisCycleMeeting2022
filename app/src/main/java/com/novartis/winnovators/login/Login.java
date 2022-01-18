@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,9 +13,8 @@ import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
 import com.novartis.winnovators.HomeActivity;
-import com.novartis.winnovators.UserUtils;
+import com.novartis.winnovators.utils.UserUtils;
 import com.novartis.winnovators.webservice.Webservice;
-import com.pusher.pushnotifications.PushNotifications;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -94,6 +92,7 @@ public class Login extends AppCompatActivity implements BottomSheet_forgot_passw
                             UserUtils.setUserPhoto(getBaseContext(), res.getJSONObject("account").getString("photo"));
                             UserUtils.setLoginData(getBaseContext(), emailtxt, passwordtxt);
                             startActivity(new Intent(getBaseContext(), HomeActivity.class));
+                            finish();
                         } else {
 
                             JSONObject res = new JSONObject(response.errorBody().string());

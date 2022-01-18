@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.example.novariscyclemeeting2022.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.novartis.winnovators.UserUtils;
+import com.novartis.winnovators.utils.UserUtils;
 import com.novartis.winnovators.webservice.Webservice;
 
 import org.json.JSONArray;
