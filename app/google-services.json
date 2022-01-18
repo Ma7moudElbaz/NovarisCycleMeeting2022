@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "243402421530",
+    "project_id": "winnovators-da2a3",
+    "storage_bucket": "winnovators-da2a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243402421530:android:b41d15e79ac4a490d2e8a3",
+        "android_client_info": {
+          "package_name": "com.novartis.winnovators"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243402421530-muhtudldul4lsuin0fl5qtvtbo5e6omi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8E0cBtHFlcKYgrzr5hmaywo-Pn_y6NOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243402421530-muhtudldul4lsuin0fl5qtvtbo5e6omi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

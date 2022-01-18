@@ -15,8 +15,8 @@ import android.widget.Toast;
 import com.example.novariscyclemeeting2022.R;
 import com.novartis.winnovators.HomeActivity;
 import com.novartis.winnovators.UserUtils;
-import com.novartis.winnovators.profile.BottomSheet_change_password;
 import com.novartis.winnovators.webservice.Webservice;
+import com.pusher.pushnotifications.PushNotifications;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity implements BottomSheet_forgot_passw
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         initFields();
         employerCode.setText(UserUtils.getLoginName(getBaseContext()));
         password.setText(UserUtils.getLoginPassword(getBaseContext()));

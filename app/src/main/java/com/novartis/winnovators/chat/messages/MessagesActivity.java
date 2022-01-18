@@ -55,6 +55,7 @@ public class MessagesActivity extends AppCompatActivity {
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on("getMessagesResponse", getMessagesResponse);
         mSocket.on(Socket.EVENT_MESSAGE, onMessage);
+        mSocket.on("onMessage", onMessage);
         mSocket.on("addMessageResponse", addMessageResponse);
 
         mSocket.connect();
@@ -122,7 +123,10 @@ public class MessagesActivity extends AppCompatActivity {
         //set the adapter for the recycler view}
     });
 
-    private final Emitter.Listener onMessage = args -> runOnUiThread(() -> Log.e("On Message", Arrays.toString(args)));
+    private final Emitter.Listener onMessage = args -> runOnUiThread(() -> {
+        Log.e("On Message", Arrays.toString(args));
+        Toast.makeText(getBaseContext(), "Arrays.toString(args)", Toast.LENGTH_SHORT).show();
+    });
 
     public void setMessages_list(JSONArray list) {
         try {
