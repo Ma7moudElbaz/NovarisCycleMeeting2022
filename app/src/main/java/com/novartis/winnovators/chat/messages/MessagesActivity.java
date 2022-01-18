@@ -38,7 +38,7 @@ public class MessagesActivity extends AppCompatActivity {
     ArrayList<Message_item> items_list;
     Messages_adapter adapter;
     int toUserId, fromUserId;
-    String toUserName, toImageUrl;
+    String toUserName, toImageUrl, toSocketId;
     private Socket mSocket;
 
 
@@ -49,10 +49,12 @@ public class MessagesActivity extends AppCompatActivity {
         initFields();
         screenTitle.setOnClickListener(v -> onBackPressed());
 
+        mSocket.connect();
         mSocket.on(Socket.EVENT_CONNECT, onConnected);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on("getMessagesResponse", getMessagesResponse);
-        mSocket.connect();
+        mSocket.on("addMessageResponse", addMessageResponse);
+        mSocket.on("typing", onTyping);
         send_msg.setOnClickListener(v -> {
             if (et_msg.length() != 0) {
                 sendMsg(et_msg.getText().toString());
@@ -63,6 +65,7 @@ public class MessagesActivity extends AppCompatActivity {
 
         getChatMessages();
     }
+
     // Socket Listeners
     private final Emitter.Listener onConnected = args -> runOnUiThread(() -> Log.e("connection success", Arrays.toString(args)));
 
@@ -84,14 +87,54 @@ public class MessagesActivity extends AppCompatActivity {
         }
     });
 
+    private final Emitter.Listener addMessageResponse = args -> runOnUiThread(() -> {
+        Log.e("addMessage Response", Arrays.toString(args));
+        JSONObject data = (JSONObject) args[0];
+        try {
+            int id = 0;
+            int fromUserId = data.getInt("fromUserId");
+            int toUserId = data.getInt("toUserId");
+            String message = data.getString("message");
+            String time = data.getString("time");
+            String date = data.getString("date");
+            String type = data.getString("type");
+            String fileFormat = data.getString("fileFormat");
+            String filePath = data.getString("filePath");
+            items_list.add(new Message_item(id, fromUserId, toUserId, message, time, date, type, fileFormat, filePath));
+            adapter.notifyDataSetChanged();
+            scrollToEnd();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+//        try {
+//            JSONArray usersArray = data.getJSONArray("result");
+//            setMessages_list(usersArray);
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+    });
+
+    private final Emitter.Listener onTyping = args -> runOnUiThread(() -> Log.e("Typing", Arrays.toString(args)));
+
+
     //My Methods
     private void sendMsg(String msg) {
         HashMap map = new HashMap();
+
         map.put("fromUserId", fromUserId);
         map.put("toUserId", toUserId);
+        map.put("toSocketId", toSocketId);
         map.put("message", msg);
+        map.put("filePath", "");
+        map.put("fileFormat", "");
+        map.put("type", "text");
 
         JSONObject obj = new JSONObject(map);
+        Log.e("Object", obj.toString());
         items_list.add(new Message_item(1, fromUserId, toUserId, msg, "", "", "", "", ""));
         adapter.notifyDataSetChanged();
         scrollToEnd();
@@ -134,6 +177,8 @@ public class MessagesActivity extends AppCompatActivity {
         toUserId = getIntent().getIntExtra("to_user_id", 0);
         toUserName = getIntent().getStringExtra("to_user_name");
         toImageUrl = getIntent().getStringExtra("to_image_url");
+
+        toSocketId = getIntent().getStringExtra("to_socket_id");
         fromUserId = UserUtils.getUserId(getBaseContext());
         screenTitle = findViewById(R.id.screen_title);
         screenTitle.setText(toUserName);

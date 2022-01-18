@@ -60,6 +60,7 @@ public class Users_adapter extends RecyclerView.Adapter<Users_adapter.ViewHolder
             i.putExtra("to_user_id",items.get(position).getId());
             i.putExtra("to_user_name",items.get(position).getName());
             i.putExtra("to_image_url",items.get(position).getImg_profile());
+            i.putExtra("to_socket_id",items.get(position).getSocket_id());
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             mContext.startActivity(i);
         });

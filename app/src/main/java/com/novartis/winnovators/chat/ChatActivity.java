@@ -42,10 +42,10 @@ public class ChatActivity extends AppCompatActivity {
         initFields();
         screenTitle.setOnClickListener(v -> onBackPressed());
 
+        mSocket.connect();
         mSocket.on(Socket.EVENT_CONNECT, onConnected);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on("chatListRes", onChatListRes);
-        mSocket.connect();
 
         getUsersChatList();
     }
