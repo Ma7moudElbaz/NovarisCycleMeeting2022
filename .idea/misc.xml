@@ -45,7 +45,7 @@
         <entry key="app/src/main/res/layout/item_message_left.xml" value="0.22727272727272727" />
         <entry key="app/src/main/res/layout/item_message_right.xml" value="0.234375" />
         <entry key="app/src/main/res/layout/item_notification.xml" value="0.38162544169611307" />
-        <entry key="app/src/main/res/layout/item_post.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/item_post.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.19814814814814816" />
         <entry key="app/src/main/res/layout/item_voting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/news_list_item.xml" value="0.234375" />

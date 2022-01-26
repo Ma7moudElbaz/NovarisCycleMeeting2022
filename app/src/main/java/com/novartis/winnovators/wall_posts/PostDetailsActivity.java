@@ -226,7 +226,6 @@ public class PostDetailsActivity extends AppCompatActivity {
             img_post.setVisibility(View.VISIBLE);
             Glide.with(getBaseContext())
                     .load(dataObj.getString("photo"))
-                    .centerCrop()
                     .into(img_post);
         }
 

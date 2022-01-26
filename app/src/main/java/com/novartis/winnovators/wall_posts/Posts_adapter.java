@@ -49,7 +49,6 @@ public class Posts_adapter extends RecyclerView.Adapter<Posts_adapter.ViewHolder
             holder.img_post.setVisibility(View.VISIBLE);
             Glide.with(mContext)
                     .load(items.get(position).getImg_url())
-                    .centerCrop()
                     .into(holder.img_post);
         }
         if (items.get(position).getIsLiked() == 0) {
