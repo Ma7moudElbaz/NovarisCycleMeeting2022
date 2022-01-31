@@ -1,8 +1,10 @@
 package com.novartis.winnovators.gm_message;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -51,6 +53,7 @@ public class GmMessageActivity extends AppCompatActivity {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void setFields(JSONObject dataObj) throws JSONException {
         name.setText(dataObj.getString("name"));
         role.setText(dataObj.getString("role"));
@@ -70,6 +73,7 @@ public class GmMessageActivity extends AppCompatActivity {
         loading.setVisibility(View.VISIBLE);
 
         Webservice.getInstance().getApi().getGmMessage(UserUtils.getAccessToken(getBaseContext())).enqueue(new Callback<ResponseBody>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
 
